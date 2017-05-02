@@ -1,0 +1,12 @@
+app/*
+bin/*
+libexec/*
+logs/*
+production/*
+project/*
+public/*
+test/*
+.ensime_cache/*
+.git/*
+.ivy2/*
+.sbt/*
