@@ -1,6 +1,7 @@
 import com.google.inject.AbstractModule
 import java.time.Clock
 
+import services.chat.{ChatService, ChatServiceImpl}
 import services.{ApplicationTimer, AtomicCounter, Counter}
 
 /**
@@ -23,6 +24,12 @@ class Module extends AbstractModule {
     bind(classOf[ApplicationTimer]).asEagerSingleton()
     // Set AtomicCounter as the implementation for Counter.
     bind(classOf[Counter]).to(classOf[AtomicCounter])
+
+    configureService()
+  }
+
+  private def configureService() = {
+    bind(classOf[ChatService]).to(classOf[ChatServiceImpl])
   }
 
 }
