@@ -18,7 +18,12 @@ class ChatController @Inject() (chatService: ChatService) extends Controller {
     Ok(chatEntities.toJson.prettyPrint)
   }
 
-  def create: Action[AnyContent] = Action {
+  def create = Action(parse.json) { request =>
+    // Parameterの変換
+    val body = (request.body \ "body").as[String]
+    val senderName = (request.body \ "senderName").as[String]
+    chatService.send(body, senderName)
+
     val result = Map("status" -> "ok", "method" -> "POST")
     Ok(Json.toJson(result))
   }

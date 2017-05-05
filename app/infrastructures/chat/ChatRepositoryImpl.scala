@@ -17,5 +17,10 @@ class ChatRepositoryImpl extends SkinnyCRUDMapper[ChatEntity] with ChatRepositor
     senderName = rs.string(rn.senderName)
   )
 
+  override def insert(chat: ChatEntity): Long = createWithNamedValues(
+    column.body -> chat.body,
+    column.senderName -> chat.senderName
+  )
+
 }
 
