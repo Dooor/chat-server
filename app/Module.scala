@@ -4,6 +4,9 @@ import java.time.Clock
 import services.chat.{ChatService, ChatServiceImpl}
 import services.{ApplicationTimer, AtomicCounter, Counter}
 
+import domain.chat.ChatRepository
+import infrastructures.chat.ChatRepositoryImpl
+
 /**
  * This class is a Guice module that tells Guice how to bind several
  * different types. This Guice module is created when the Play
@@ -26,10 +29,15 @@ class Module extends AbstractModule {
     bind(classOf[Counter]).to(classOf[AtomicCounter])
 
     configureService()
+    configureInfrastructures()
   }
 
   private def configureService() = {
     bind(classOf[ChatService]).to(classOf[ChatServiceImpl])
+  }
+
+  private def configureInfrastructures() = {
+    bind(classOf[ChatRepository]).to(classOf[ChatRepositoryImpl])
   }
 
 }
