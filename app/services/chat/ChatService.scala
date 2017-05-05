@@ -2,16 +2,16 @@ package services.chat
 
 import javax.inject._
 
-import domain.chat.ChatRepository
+import domain.chat.{ChatRepository, ChatEntity}
 
 trait ChatService {
-  def listAll(): Map[String, String]
+  def listAll(): Seq[ChatEntity]
 }
 
 @Singleton
 class ChatServiceImpl @Inject() (chatRepository: ChatRepository) extends ChatService {
 
-  override def listAll(): Map[String, String] = {
+  override def listAll(): Seq[ChatEntity] = {
     return chatRepository.listAll()
   }
 
