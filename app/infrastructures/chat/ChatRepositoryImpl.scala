@@ -2,6 +2,7 @@ package infrastructures.chat
 
 import domain.chat.{ChatRepository, ChatEntity}
 import scalikejdbc._
+import scalikejdbc.jsr310._
 import skinny.orm.{Alias, SkinnyCRUDMapper}
 
 class ChatRepositoryImpl extends SkinnyCRUDMapper[ChatEntity] with ChatRepository {
@@ -14,12 +15,14 @@ class ChatRepositoryImpl extends SkinnyCRUDMapper[ChatEntity] with ChatRepositor
   override def extract(rs: WrappedResultSet, rn: ResultName[ChatEntity]): ChatEntity = ChatEntity(
     id = Some(rs.int(rn.id)),
     body = rs.string(rn.body),
-    senderName = rs.string(rn.senderName)
+    senderName = rs.string(rn.senderName),
+    sentAt = rs.zonedDateTime(rn.sentAt)
   )
 
   override def insert(chat: ChatEntity): Long = createWithNamedValues(
     column.body -> chat.body,
-    column.senderName -> chat.senderName
+    column.senderName -> chat.senderName,
+    column.sentAt -> chat.sentAt
   )
 
 }

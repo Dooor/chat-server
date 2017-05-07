@@ -2,6 +2,8 @@ package services.chat
 
 import javax.inject._
 
+import java.time.ZonedDateTime
+
 import domain.chat.{ChatRepository, ChatEntity}
 
 trait ChatService {
@@ -17,7 +19,7 @@ class ChatServiceImpl @Inject() (chatRepository: ChatRepository) extends ChatSer
   }
 
   override def send(body: String, senderName: String): Long = {
-    val chat = ChatEntity(None, body, senderName)
+    val chat = ChatEntity(None, body, senderName, ZonedDateTime.now())
     return chatRepository.insert(chat)
   }
 
