@@ -20,4 +20,5 @@ GET     /chat                       controllers.ChatController.index
 POST    /chat                       controllers.ChatController.create
 
 # Room
+GET     /room                       controllers.RoomController.index
 POST    /room                       controllers.RoomController.create
