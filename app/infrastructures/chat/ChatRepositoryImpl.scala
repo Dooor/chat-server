@@ -1,6 +1,6 @@
 package infrastructures.chat
 
-import domain.chat.{ChatRepository, ChatEntity}
+import domains.chat.{ChatRepository, ChatEntity}
 import scalikejdbc._
 import scalikejdbc.jsr310._
 import skinny.orm.{Alias, SkinnyCRUDMapper}

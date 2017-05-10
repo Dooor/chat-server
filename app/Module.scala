@@ -4,7 +4,7 @@ import java.time.Clock
 import services.chat.{ChatService, ChatServiceImpl}
 import services.{ApplicationTimer, AtomicCounter, Counter}
 
-import domain.chat.ChatRepository
+import domains.chat.ChatRepository
 import infrastructures.chat.ChatRepositoryImpl
 
 /**

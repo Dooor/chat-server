@@ -1,4 +1,4 @@
-package domain.chat
+package domains.chat
 
 import java.time.ZonedDateTime
 

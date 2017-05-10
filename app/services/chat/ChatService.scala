@@ -4,7 +4,7 @@ import javax.inject._
 
 import java.time.ZonedDateTime
 
-import domain.chat.{ChatRepository, ChatEntity}
+import domains.chat.{ChatRepository, ChatEntity}
 
 trait ChatService {
   def listAll(): Seq[ChatEntity]

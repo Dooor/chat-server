@@ -1,14 +1,12 @@
 package controllers
 
+import domains.chat.ChatEntity
+import domains.chat.ChatEntityJsonProtocol._
 import javax.inject._
-
 import play.api.mvc._
 import play.api.libs.json.Json
-import spray.json._
-
 import services.chat.ChatService
-import domain.chat.ChatEntity
-import domain.chat.ChatEntityJsonProtocol._
+import spray.json._
 
 @Singleton
 class ChatController @Inject() (chatService: ChatService) extends Controller {
