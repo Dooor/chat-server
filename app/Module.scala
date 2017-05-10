@@ -1,11 +1,13 @@
 import com.google.inject.AbstractModule
+import domains.chat.ChatRepository
+import domains.room.RoomRepository
+import infrastructures.chat.ChatRepositoryImpl
+import infrastructures.room.RoomRepositoryImpl
 import java.time.Clock
-
 import services.chat.{ChatService, ChatServiceImpl}
+import services.room.{RoomService, RoomServiceImpl}
 import services.{ApplicationTimer, AtomicCounter, Counter}
 
-import domains.chat.ChatRepository
-import infrastructures.chat.ChatRepositoryImpl
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -34,10 +36,12 @@ class Module extends AbstractModule {
 
   private def configureService() = {
     bind(classOf[ChatService]).to(classOf[ChatServiceImpl])
+    bind(classOf[RoomService]).to(classOf[RoomServiceImpl])
   }
 
   private def configureInfrastructures() = {
     bind(classOf[ChatRepository]).to(classOf[ChatRepositoryImpl])
+    bind(classOf[RoomRepository]).to(classOf[RoomRepositoryImpl])
   }
 
 }
