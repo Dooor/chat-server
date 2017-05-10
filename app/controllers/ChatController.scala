@@ -12,7 +12,7 @@ import spray.json._
 class ChatController @Inject() (chatService: ChatService) extends Controller {
 
   def index(name: String): Action[AnyContent] = Action {
-    val chatEntities: Seq[ChatEntity] = chatService.listAll()
+    val chatEntities: Seq[ChatEntity] = chatService.listByRoomName(name)
     Ok(chatEntities.toJson.prettyPrint)
   }
 
