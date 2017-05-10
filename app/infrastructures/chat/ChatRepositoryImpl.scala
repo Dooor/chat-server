@@ -10,6 +10,8 @@ class ChatRepositoryImpl extends SkinnyCRUDMapper[ChatEntity] with ChatRepositor
   override lazy val tableName: String = "chats"
   private[this] lazy val c = defaultAlias
 
+  override def listByRoomName(roomName: String): Seq[ChatEntity] = where('roomName -> roomName).apply()
+
   override def listAll(): Seq[ChatEntity] = findAll()
 
   override def extract(rs: WrappedResultSet, rn: ResultName[ChatEntity]): ChatEntity = ChatEntity(
