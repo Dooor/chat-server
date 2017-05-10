@@ -1,7 +1,6 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 
 /**
@@ -21,4 +20,7 @@ class HomeController @Inject() extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
+  def redirectDocs: Action[AnyContent] = Action {
+    Redirect(url = "/assets/lib/swagger-ui/index.html", queryString = Map("url" -> Seq("/api-docs")))
+  }
 }
