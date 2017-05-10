@@ -6,6 +6,7 @@ import javax.inject._
 
 trait RoomService {
   def listAll(): Seq[RoomEntity]
+  def enter(name: String): RoomEntity
   def create(name: String): Unit
 }
 
@@ -14,6 +15,10 @@ class RoomServiceImpl @Inject() (roomRepository: RoomRepository) extends RoomSer
 
   override def listAll(): Seq[RoomEntity] = {
     return roomRepository.listAll()
+  }
+
+  override def enter(name: String): RoomEntity = {
+    roomRepository.getByName(name)
   }
 
   override def create(name: String): Unit = {

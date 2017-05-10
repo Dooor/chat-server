@@ -14,6 +14,11 @@ class RoomController @Inject() (roomService: RoomService) extends Controller {
     Ok(result.toJson.prettyPrint).as(JSON)
   }
 
+  def show(name: String): Action[AnyContent] = Action {
+    val room = roomService.enter(name)
+    Ok(room.toJson.prettyPrint).as(JSON)
+  }
+
   def create = Action(parse.json) { request =>
     val name = (request.body \ "name").as[String]
     roomService.create(name)

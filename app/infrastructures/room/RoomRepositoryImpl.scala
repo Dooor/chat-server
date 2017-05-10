@@ -10,6 +10,8 @@ class RoomRepositoryImpl extends SkinnyCRUDMapper[RoomEntity] with RoomRepositor
   override lazy val tableName: String = "rooms"
   private[this] lazy val r = defaultAlias
 
+  override def getByName(name: String): RoomEntity = where('name -> name).apply().head
+
   override def listAll(): Seq[RoomEntity] = findAll()
 
   override def extract(rs: WrappedResultSet, rn: ResultName[RoomEntity]): RoomEntity = RoomEntity(
