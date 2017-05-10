@@ -8,7 +8,7 @@ import domains.chat.{ChatRepository, ChatEntity}
 
 trait ChatService {
   def listAll(): Seq[ChatEntity]
-  def send(body: String, senderName: String): Long
+  def send(body: String, senderName: String, roomName: String): Unit
 }
 
 @Singleton
@@ -18,9 +18,9 @@ class ChatServiceImpl @Inject() (chatRepository: ChatRepository) extends ChatSer
     return chatRepository.listAll()
   }
 
-  override def send(body: String, senderName: String): Long = {
-    val chat = ChatEntity(None, body, senderName, ZonedDateTime.now())
-    return chatRepository.insert(chat)
+  override def send(body: String, senderName: String, roomName: String): Unit = {
+    val chat = ChatEntity(None, body, senderName, roomName, ZonedDateTime.now())
+    chatRepository.insert(chat)
   }
 
 }

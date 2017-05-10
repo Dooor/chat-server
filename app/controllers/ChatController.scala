@@ -11,18 +11,18 @@ import spray.json._
 @Singleton
 class ChatController @Inject() (chatService: ChatService) extends Controller {
 
-  def index: Action[AnyContent] = Action {
+  def index(name: String): Action[AnyContent] = Action {
     val chatEntities: Seq[ChatEntity] = chatService.listAll()
     Ok(chatEntities.toJson.prettyPrint)
   }
 
-  def create = Action(parse.json) { request =>
-    // Parameterの変換
+  def create(name: String) = Action(parse.json) { request =>
     val body = (request.body \ "body").as[String]
     val senderName = (request.body \ "senderName").as[String]
-    chatService.send(body, senderName)
+    chatService.send(body, senderName, name)
 
     val result = Map("status" -> "ok", "method" -> "POST")
     Ok(Json.toJson(result))
   }
+
 }
