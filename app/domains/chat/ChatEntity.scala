@@ -9,10 +9,11 @@ final case class ChatEntity(
                              id: Option[Int] = None,
                              body: String,
                              senderName: String,
+                             roomName: String,
                              sentAt: ZonedDateTime
                            ) {
 }
 
 object ChatEntityJsonProtocol extends DefaultJsonProtocol {
-  implicit val format: RootJsonFormat[ChatEntity] = jsonFormat4(ChatEntity)
+  implicit val format: RootJsonFormat[ChatEntity] = jsonFormat5(ChatEntity)
 }

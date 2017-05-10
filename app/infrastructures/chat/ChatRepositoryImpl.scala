@@ -16,14 +16,15 @@ class ChatRepositoryImpl extends SkinnyCRUDMapper[ChatEntity] with ChatRepositor
     id = Some(rs.int(rn.id)),
     body = rs.string(rn.body),
     senderName = rs.string(rn.senderName),
+    roomName = rs.string(rn.roomName),
     sentAt = rs.zonedDateTime(rn.sentAt)
   )
 
   override def insert(chat: ChatEntity): Long = createWithNamedValues(
     column.body -> chat.body,
     column.senderName -> chat.senderName,
+    column.roomName -> chat.roomName,
     column.sentAt -> chat.sentAt
   )
 
 }
-
