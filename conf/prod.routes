@@ -15,10 +15,11 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 # JSON API
 # ~~~
 
-# Chat
-GET     /chat                       controllers.ChatController.index
-POST    /chat                       controllers.ChatController.create
-
 # Room
 GET     /room                       controllers.RoomController.index
+GET     /room/:name                 controllers.RoomController.show(name: String)
 POST    /room                       controllers.RoomController.create
+
+# Chat
+GET     /room/:name/chat            controllers.ChatController.index(name: String)
+POST    /room/:name/chat            controllers.ChatController.create(name: String)
