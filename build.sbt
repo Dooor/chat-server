@@ -26,5 +26,9 @@ libraryDependencies ++= Seq(
   // O/Rマッパー
   "org.skinny-framework" %% "skinny-orm" % "2.3.+",
   // JSON変換用のライブラリ
-  "io.spray" %% "spray-json" % "1.3.3"
+  "io.spray" %% "spray-json" % "1.3.3",
+  // REST APIのドキュメントを自動生成用ライブラリ
+  "io.swagger" %% "swagger-play2" % "1.5.3",
+  // Swagger で生成したドキュメントをブラウザで見れるようにするためのライブラリ
+  "org.webjars" % "swagger-ui" % "2.1.8-M1"
 )
