@@ -6,5 +6,6 @@ target
 /.project
 /.settings
 /RUNNING_PID
-.ensime
-.ensime_cache
+/.ensime
+/.ensime_cache
+/.history
